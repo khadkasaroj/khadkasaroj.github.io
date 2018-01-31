@@ -1,0 +1,99 @@
+body{
+
+color:black;
+font:arial, 'times new roman',sans seriff ;
+margin:0px;
+
+}
+#nav{
+height:50px;
+text-align:justified;
+padding:0px 0px;
+margin:0px;}
+
+.decor{
+border:1px solid black;
+padding:2px;
+margin:10px 0px;
+}
+
+ 
+
+p{
+margin:2px;
+padding:2px 0.5px ;
+
+color:black;
+text-align:justified;
+}
+
+
+
+/*add border around an image */
+#imgcontainer{
+margin:2px 2px;
+border-style:inset;
+border-width:thick;
+padding: 5px;
+float:left;
+height:auto;
+width:180px;
+}
+
+#clear{clear:both;}
+
+.float{
+float:left;}
+
+header{
+margin-bottom:10px;}
+div #wrapper{
+margin-top:60px;}
+
+header,footer{
+text-align:center;
+background-color:black;
+color:white;}
+
+ #mainmenu li{
+float:left;
+margin:0;
+padding:0;
+list-style:none;
+
+}
+a{
+text-decoration:none;}
+#mainmenu li a {
+display:block;
+margin:0 1px 0 0;
+padding:4px 10px;
+
+background:black;
+color:white;
+text-align:center;}
+
+#mainmenu li:hover ol{
+visibility:visible}
+#mainmenu ol{
+position:absolute;
+visibility:hidden;
+margin:0;
+padding:0;
+background:grey;
+border:1px solid white;
+width:80px;}
+
+#mainmenu ol a{
+position:relative;
+display:block;
+margin:0;
+padding: 5px 10px;
+
+text-align:left;
+background-color:lightgrey;
+color:black;}
+#mainmenu ol a:hover{
+background:violet;}
+
+

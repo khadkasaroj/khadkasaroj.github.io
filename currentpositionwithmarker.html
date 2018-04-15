@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Short Task no 5: find the current position of the user </title>
+    <script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyAbDvJ3jv7OyiZsyyKt9XWcEEdEV7yhQgU&sensor=false"></script>
+    <style>
+    html, body, #map_canvas{width:100%;height:100%;}
+    </style>
+  </head>
+  <button id="location" onclick="locate()">find my location</button>
+  <div id="coordinates"></div>
+    <div id="map_canvas"></div>
+  </body>
+  <script>
+    var x= document.getElementById("location");
+    
+    function locate(){
+        navigator.geolocation.getCurrentPosition(initialize,fail);
+    }
+
+    function initialize(position) {
+      var lat= position.coords.latitude;
+      var long=position.coords.longitude;
+      document.getElementById("coordinates").innerHTML="Latitude:"+lat+"longitude:"+long;
+
+
+        var myLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var mapOptions = {
+          zoom: 13,
+          center: myLatLng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'),
+                                      mapOptions);
+        var userMarker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title:"I am here!"
+        });
+      }
+
+    function fail(error)
+  {
+  switch(error.code) 
+    {
+    case error.PERMISSION_DENIED:
+      x.innerHTML="User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML="Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML="The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML="An unknown error occurred."
+      break;
+    }
+  }
+    </script>
+</html>

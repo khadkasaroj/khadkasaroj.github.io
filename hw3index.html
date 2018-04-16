@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8" />
+
+  <title>ABC Toys</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- home page-->
+  
+<div data-role="page" id="home">
+
+
+	<!--persistent header-->
+	<header data-role="header" data-position="fixed" data-id="persistentheader" data-theme="b">
+		
+		<nav data-role="navbar">
+			<ul data-role="listview">
+				<li><a href="#home" class="ui-btn ui-btn-active ui-state-persist">home</a></li>
+<li><a href="#contact-us" class="ui-btn ">contact us</a></li>
+<li><a href="#product" class="ui-btn">product</a></li>
+<li><a href="location.html" rel="external" class="ui-btn">location</a></li>
+
+
+			</ul>
+
+
+		</nav>
+
+
+	</header>
+
+
+	<!-- main content-->
+	<div role="main" class="ui-content">
+<h1>ABC Toys</h1>
+<h3>Making learning fun</h3>
+  
+
+<p>ABC Toys is a company that opened its doors in 2001 and it has kept its mission for all those years.</p>
+<p>The mission of our company is to create toys that are safe for kindergarten kids but that challenge the kids' mind and motor skills making learning a fun task.</p>
+<p>By the way, parents love our toys too</p>
+
+</div>
+<footer data-role="footer">
+<p>&copy; Saroj Khadka 2018</p>
+</footer>
+
+</div>
+
+
+
+<!-- contact us page -->
+
+
+
+<div  data-role="page" id="contact-us" data-title="contact information">
+
+	<header data-role="header" data-position="fixed" data-id="persistentheader" data-theme="b">
+		<nav data-role="navbar">
+			<ul data-role="listview">
+				<li><a href="#home" class="ui-btn" >home</a></li>
+<li><a href="#contact-us" class="ui-btn ui-btn-active ui-state-persist">contact us</a></li>
+<li><a href="#product" class="ui-btn">product</a></li>
+<li><a href="location.html" rel="external" class="ui-btn">location</a></li>
+
+
+			</ul>
+		</nav>
+	</header>
+	<div id="wrapper" data-role="content">
+		
+			<div class="ui-grid-b ui-content">
+				
+			<div class="ui-block-a">
+			<a href="tel:6506531673" class="ui-btn">call us </a>
+		
+		</div>
+		<div class="ui-block-b">
+			<a href="mailto:tokhadka.saroj@gmail.com" class="ui-btn"> write us an email</a>
+		</div>
+		<div class="ui-block-c">
+		
+		
+
+<div class="fb-like ui-btn" data-width="100" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="true">like us on facebook</div>
+
+</div>
+
+
+</div>
+
+
+
+
+		
+		<form action="" method="">
+<fieldset>information
+<label for="firstName">firstName:</label>
+<input type="text" id="firstName" name="firstName" placeholder="firstName">
+<label for="lastName">lastName:</label>
+<input type="text" id="lastName" name="lastName" placeholder="lastName"/>
+<label for="email">email:</label>
+<input type="email" id="email" name="email" required/>
+
+
+
+</fieldset>
+<label for="eomments">comments:</label>
+<textarea id="comments" name="comments">
+
+
+</textarea>
+
+
+		</form>
+
+
+
+
+
+	</div>
+	<footer data-role="footer"</footer>
+
+
+
+
+
+</div>
+<div data-role="page" id="product" data-title="products.html">
+	<header data-role="header" data-id="persistenheader" data-position="fixed" data-theme="b">
+		<nav data-role="navbar">
+			<ul data-role="listview">
+				<li><a href="#home" class="ui-btn ui-icon-home">home</a></li>
+<li><a href="#contact-us">contact us</a></li>
+<li><a href="#product" class="ui-btn-active ui-state-persist">product</a></li>
+<li><a href="location.html" rel="external">location</a></li>
+
+
+			</ul>
+	</header>
+<div id="wrapper" data-role="content">
+	<div data-role="collapsible" data-theme="b">
+		<h4> Our toys</h4>
+		<div data-role="collapsible" data-collapsed-icon="info">
+			<h4> LEGO</h4>
+			<div class="ui-grid-a ui-content">
+				<div class="ui-block-a">
+					<img src="../images/lego.jpg" alt="lego" width="100%"  />
+					</div>
+					<div class="ui-block-b">
+						<h5>product description</h5>
+						<p> strecth the limits of your imagination with this colorful and flexible set of LEGO(R) bricks that inspire open-ended building play,including bricks with face decoration , special farmyard and dinosaur themed elements and building ideas on the packaging. This set makes a great supplement to any builder's lego collection</p></div></div></div>
+						<div data-role="collapsible" data-collapsed-icon="info">
+			<h4> NERF N Strike Elite AccuStrike Series AlphaHawk Blaster</h4>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<img src="../images/nerf.png" alt="lego" width="100%"  />
+					</div>
+					<div class="ui-block-b">
+						<h5>product description</h5>
+						<p>Kids can strike with confidence as they blast darts designed for accuracy !The NERF N Strike AlphaHawk is part of the AccuStrike Series,which features darts designed for greater accuracy . Hit the mark with the precision of the most accurate NERF darts. The AlphaHawk blaster fires 1 dar at a time from a revolving, easy-load drum that holds up to 5 darts . Take aim and strike like a hawk !Includes 10 Elite foam darts that are designed for greater accuracy</p></div></div></div>
+						
+<div data-role="collapsible" data-collapsed-icon="info">
+			<h4> Radio Flyer Fold 2 Go Trike -red</h4>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<img src="../images/bike.png" alt="lego" width="100%"  />
+					</div>
+					<div class="ui-block-b">
+						<h5>product description</h5>
+						<p>The Fold 2 Go(R) Trike offers convenience, comfort and fun!The trike comes fully assembled for instant riding. It folds for easy portability and storage, and has an easy to carry handle grip.The trike also has a safety latch to keep it secure during use. The low center of gravity and controlled turning radius offe stability and the sturdy steel construction and adjustable seat ensure your child will enjoy the trike for years. Plus , it comes with streamers and a fun covered storage bin.For ages 1.5-3 years. Steel frame and adjustable seat grows with your child.Includes streamers and covered storage bin for child fun</p></div></div></div>
+						<div data-role="collapsible" data-collapsed-icon="info">
+			<h4>LeapFrog LeapStart Pre-k Read and Write Activity Book</h4>
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<img src="../images/leapfrog.jpg" alt="leapfrog" width="100%"  />
+					</div>
+					<div class="ui-block-b">
+						<h5>product description</h5>
+						<p>Dig into early reading and writing skills with this fun-filled , interactive activity book for Leap Start(TM) the interactive learning system designed to get your child ready for school and life. LeapFrog(R) LeapStart(TM) Read and Write with communication skills activity book is jam-packed with 40+ replayable activities that engage kids ages 3-5 at the pre-kindergarten level to keep them playing and learning for hours. 
+							
+
+						</p></div>
+						<div class="ui-block-c">
+							<br />
+							<br/>
+							<p>With the LeapStart system, every page talks , sings and jokes with exciting audio interactions that bring learining to life. Explore the wacky world of Doodle Express and "ride" around town in search of letters and words. Help a detective find out who store a missing cat by reading clues and eliminating suspects
+
+
+
+						</div>
+
+
+
+
+					</div></div><div data-role="collapsible" data-collapsed-icon="info">
+			<h4> Radio Flyer Fold 2 Go Trike -red</h4>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<img src="../images/monopoly.png" alt="monopoly" width="100%"  />
+					</div>
+					<div class="ui-block-b">
+						<h5>product description</h5>
+						<p>This version of the Monopoly Game welcomes the Rubber Ducky, Tyrannosaurus Rex and Penguin into its family of tokens. Choose your token, place it on Go! and roll the dice to own it all ! There can be only one winner in the Monopoly game. Will it be you?Includes game board, 8 tokens , 28 title deed cards, 16 chance cards, 16 community chest cards, 32 houses, 12 hotels, 2 dice, money pack and instructions. Ages 8 and up . For 2-8 players. The Hasbro Gaming and Monopoly names and logos , the distinctive design of the game board, the four corner squares, and the Mr. Monopoly name and character, as well as each of teh distinctive elements of the board and playing pieces are trademarks of Hasbro</p></div></div></div>
+
+
+
+
+	</div>
+
+
+</div>
+<footer data-role="footer">&copy;Saroj khadka 2018</footer>
+
+</div>
+
+
+
+</body>
+
+</html>

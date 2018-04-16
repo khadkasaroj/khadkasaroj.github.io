@@ -86,20 +86,34 @@
 	</header>
 	<div id="wrapper" data-role="content">
 		
-			<div class="ui-grid-b ui-content">
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<ul data-role="listview">
+						<li><a href="#callus">call us</a></li>
+						<li><a href="#emailus">email</a></li>
+						<li><a href="#likeus">like or share</a></li>
+
+
+					</ul>
+
+
+
+				</div>
 				
-			<div class="ui-block-a">
-			<a href="tel:6506531673" class="ui-btn">call us </a>
+			<div id="callus">
+				<p>You can call us 
+			<a href="tel:6506531673" class="ui-btn">phone number </a> and speak to one of wonderful customer service representative</p>
 		
 		</div>
-		<div class="ui-block-b">
-			<a href="mailto:tokhadka.saroj@gmail.com" class="ui-btn"> write us an email</a>
+		<div id="emailus"><p>Go paperless and 
+			<a href="mailto:tokhadka.saroj@gmail.com" class="ui-btn"> write us an email</a> to give us feedback </p>
 		</div>
-		<div class="ui-block-c">
+		
+
 		
 		
 
-<div class="fb-like ui-btn" data-width="100" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="true">like us on facebook</div>
+<div id="likeus" class="fb-like ui-btn" data-width="100" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="true">like us on facebook</div>
 
 </div>
 
@@ -111,7 +125,8 @@
 
 		
 		<form action="" method="">
-<fieldset>information
+<fieldset>
+	<legend> feedback:</legend>
 <label for="firstName">firstName:</label>
 <input type="text" id="firstName" name="firstName" placeholder="firstName">
 <label for="lastName">lastName:</label>

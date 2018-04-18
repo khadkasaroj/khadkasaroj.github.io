@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="viewport"  content="width=device-width,initial-scale=1">
     <meta charset="utf-8">
     <title>Short Task no 5: find the current position of the user </title>
     <script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyAbDvJ3jv7OyiZsyyKt9XWcEEdEV7yhQgU&sensor=false"></script>
@@ -9,10 +9,11 @@
     html, body, #map_canvas{width:100%;height:100%;}
     </style>
   </head>
+  <body>
   <button id="location" onclick="locate()">find my location</button>
   <div id="coordinates"></div>
     <div id="map_canvas"></div>
-  </body>
+  
   <script>
     var x= document.getElementById("location");
     
@@ -60,4 +61,6 @@
     }
   }
     </script>
+</body>
+
 </html>

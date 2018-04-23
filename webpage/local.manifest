@@ -3,7 +3,7 @@
 CACHE MANIFEST
 
 
-CACHE:
+
 storage1.html
 local.manifest
 main.css
@@ -11,5 +11,5 @@ local.js
 offline.gif
 
 
-FALLBACK:
+
 online.gif offline.gif

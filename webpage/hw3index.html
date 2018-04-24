@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="cache.manifest" content-type="text/cache-manifest">
 <head>
 
   <meta charset="UTF-8" />
@@ -90,7 +90,7 @@
 					<p>You can call us <a href="tel:6506531673" class="  ui-btn ui-icon-phone  ui-nodisc-icon ui-alt-icon ui-btn-icon-notext" style="display:inline-block;vertical-align:middle;">phone number </a> and speak to one of wonderful customer service representative</p>
 				</div>
 				<div id="emailus">
-					<p>Go paperless and <a href="mailto:tokhadka.saroj@gmail.com" class=" ui-btn ui-icon-mail ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" style="display:inline-block; vertical-align:middle;"> write us an email</a> to give us feedback </p>
+					<p>Go paperless and send us an<a href="mailto:tokhadka.saroj@gmail.com" class=" ui-btn ui-icon-mail ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" style="display:inline-block; vertical-align:middle;"> email</a> to give us feedback </p>
 				</div>
 		
 
@@ -111,10 +111,15 @@
 						<label for="lastName">lastName:</label>
 						<input type="text" id="lastName" name="lastName" placeholder="lastName"/>
 						<label for="email">email:</label>
-						<input type="email" id="email" name="email" required/>
+						<input type="email" id="email" name="email" placeholder="abc@domain.com" required/>
 				</fieldset>
 				<label for="comments">comments:</label>
 				<textarea id="comments" name="comments" maxlength="200">leave us feedback....</textarea>
+				
+				<div data-role="controlgroup" data-type="horizontal">
+				<input type="reset" id="reset" value="reset" class="ui-btn"/>
+				<input type="submit" id="submit" value="submit" class="ui-btn"/>
+			</div>
 			</form>
 	</div>
 	<footer data-role="footer"> &copy; Saroj khadka </footer>
@@ -144,9 +149,9 @@
 			<h4> Our toys</h4>
 				<div data-role="collapsible" data-collapsed-icon="info">
 					<h6> LEGO</h6>
-						<div class="ui-grid-a ui-content ui-responsive">
+						<div class="ui-grid-a ui-content">
 							<div class="ui-block-a">
-								<img src="../pictures/lego.jpg" alt="lego" style="width:100%;" />
+								<img src="../pictures/lego.jpg" alt="lego"  />
 							</div>
 							<div class="ui-block-b">
 								<h5>product description</h5>
@@ -156,9 +161,10 @@
 				</div>
 				<div data-role="collapsible" data-collapsed-icon="info">
 					<h6> NERF N Strike Elite AccuStrike Series AlphaHawk Blaster</h6>
-						<div class="ui-grid-a ui-content ui-responsive">
+					
+						<div class="ui-grid-a ui-content">
 							<div class="ui-block-a">
-								<img src="../pictures/nerf.png" alt="lego"  style="width:100%;"/>
+								<img src="../pictures/nerf.png" alt="lego" />
 							</div>
 							<div class="ui-block-b">
 								<h5>product description</h5>
@@ -169,9 +175,9 @@
 						
 				<div data-role="collapsible" data-collapsed-icon="info">
 					<h6> Radio Flyer Fold 2 Go Trike -red</h6>
-						<div class="ui-grid-a ui-content ui-responsive">
+						<div class="ui-grid-a ui-content">
 							<div class="ui-block-a">
-								<img src="../pictures/bike.png" alt="lego" style="width:100%;"  />
+								<img src="../pictures/bike.png" alt="lego"  />
 							</div>
 							<div class="ui-block-b">
 								<h5>product description</h5>
@@ -181,9 +187,9 @@
 				</div>
 						<div data-role="collapsible" data-collapsed-icon="info">
 							<h6>LeapFrog LeapStart Pre-k Read and Write Activity Book</h6>
-							<div class="ui-grid-a ui-content ui-responsive">
+							<div class="ui-grid-a ui-content">
 								<div class="ui-block-a">
-									<img src="../pictures/leapfrog.jpg" alt="leapfrog"  style="width:100%;"  />
+									<img src="../pictures/leapfrog.jpg" alt="leapfrog"  />
 								</div>
 								<div class="ui-block-b">
 									<h5>product description</h5>
@@ -198,9 +204,9 @@
 						</div>
 						<div data-role="collapsible" data-collapsed-icon="info">
 							<h6> Radio Flyer Fold 2 Go Trike -red</h6>
-							<div class="ui-grid-a ui-content ui-responsive">
+							<div class="ui-grid-a ui-content">
 								<div class="ui-block-a">
-									<img src="../pictures/monopoly.png" alt="monopoly" style="width:100%;"  />
+									<img src="../pictures/monopoly.png" alt="monopoly"   />
 								</div>
 								<div class="ui-block-b">
 									<h5>product description</h5>

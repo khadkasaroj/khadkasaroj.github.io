@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyAbDvJ3jv7OyiZsyyKt9XWcEEdEV7yhQgU&sensor=false"></script>
+   
 </head>
 
 <body>
@@ -23,6 +24,7 @@
 				<li><a href="hw3index.html#contact-us" rel="external">contact us</a></li>
 				<li><a href="hw3index.html#product" rel="external">product</a></li>
 				<li><a href="location.html" class="ui-btn ui-btn-active ui-state-persist" >location</a></li>
+				<li><a href="hw3index.html#service_worker" rel="external" class="ui-btn">Service Worker API</a></li>
 			</ul>
 
 
@@ -31,15 +33,77 @@
 
 	</header>
 
-<div role="main" class="ui-content">
-
-	<h6> page still in building</h6>
-	<p>When we open our store, we will let you know our location here even with directions from your place to it!!</p>
-
-	<!--main content goes here-->
 
 
-</div>
+  <div data-role=content >
+  	<button id="location" onclick="locate()">find my location</button>
+    <span> Latitude : </span> <input type=text id=lat />
+    <span> Longitude : </span> <input type=text id=lng />
+    <div id="map_canvas">
+    </div>
+  </div>
+
+
+
+
+
+
+<script>
+	var x= document.getElementById("location");
+    
+    function locate(){
+        navigator.geolocation.getCurrentPosition(initialize,fail);
+    }
+
+    function initialize(position) {
+      var lat= position.coords.latitude;
+      var long=position.coords.longitude;
+       $("#lat").val (lat);
+       $("#lng").val(long);
+       drawMap(new google.maps.LatLng(lat,long));
+  }
+
+
+    function fail(error)
+  {
+  switch(error.code) 
+    {
+    case error.PERMISSION_DENIED:
+      x.innerHTML="User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML="Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML="The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML="An unknown error occurred."
+      break;
+    }
+  }
+  
+   function drawMap(LatLng) {
+        var myOptions = {
+            zoom: 20,
+            center: LatLng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        // Add an overlay to the map of current lat/lng
+        var marker = new google.maps.Marker({
+            position: LatLng,
+            map: map,
+            title: "I am here!"
+        });
+    }
+  
+    </script>
+
+
+
+
+
 <footer data-role="footer">&copy; Saroj khadka </footer>
 
 </div>

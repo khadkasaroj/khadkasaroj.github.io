@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="cache.manifest" content-type="text/cache-manifest">
+<html lang="en" >
 <head>
 
   <meta charset="UTF-8" />
@@ -36,6 +36,7 @@
 				<li><a href="#contact-us" class="ui-btn ">contact us</a></li>
 				<li><a href="#product" class="ui-btn">product</a></li>
 				<li><a href="location.html" rel="external" class="ui-btn">location</a></li>
+				<li><a href="#service_worker" class="ui-btn">Service Worker API</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -71,6 +72,7 @@
 				<li><a href="#contact-us" class="ui-btn ui-btn-active ui-state-persist">contact us</a></li>
 				<li><a href="#product" class="ui-btn">product</a></li>
 				<li><a href="location.html" rel="external" class="ui-btn">location</a></li>
+				<li><a href="#service_worker" class="ui-btn ">Service Worker API</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -103,7 +105,7 @@
 			</div>
 			<br/>
 			<br />
-			<form action="" method="">
+			<form action="?" method="post">
 				<fieldset>
 					<legend> User information:</legend>
 						<label for="firstName">firstName:</label>
@@ -140,6 +142,7 @@
 				<li><a href="#contact-us">contact us</a></li>
 				<li><a href="#product" class="ui-btn-active ui-state-persist">product</a></li>
 				<li><a href="location.html" rel="external">location</a></li>
+				<li><a href="#service_worker" class="ui-btn ">Service Worker API</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -220,6 +223,184 @@
 </div>
 
 <footer data-role="footer">&copy;Saroj khadka 2018</footer>
+
+</div>
+
+<!---page 4 service worker-->
+<div data-role="page" data-title="service worker api" id="service_worker">
+	<!--persistent header-->
+	<header data-role="header" data-position="fixed" data-id="persistentheader" data-theme="b">
+		
+		<nav data-role="navbar">
+			<ul data-role="listview">
+				<li><a href="#home" class="ui-btn">home</a></li>
+				<li><a href="#contact-us" class="ui-btn ">contact us</a></li>
+				<li><a href="#product" class="ui-btn">product</a></li>
+				<li><a href="location.html" rel="external" class="ui-btn">location</a></li>
+				<li><a href="#service_worker" class="ui-btn ui-btn-active ui-state-persist  ">Service Worker API</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div role="main" class="ui-content">
+<h5>Service worker concepts and usage</h5>
+<p>
+Service workers essentially act as proxy servers that sit between web applications, the browser and the network (when available).They are intended , among other things, to enable the creation of effective offline experience, intercept network request and take appopriate action based on whetere the network is available , and update assets residing on the server. They also allow access to push notifications and background sync APIs.
+</p>
+
+<p>A service worker is an event driven workder registered against an origin and a path. It takes the form of a JavaScript file that can control the  web page/site it is associated with, intercepting  and modifying navigation and resource requests, and caching resources.<br/>
+	A service worker is run in a worker context, meaning it has no DOM access, and runs on a different thread to the main javaScript.It is designed to be fully async.Service workers only run over HTTPS, for security reasons. 
+</p>
+<h6>The service worker life cycle </h6>
+<p>A service worker has a lifecycle that is completely separate from our web page. To install a service worker for our site, we need to register it, in our page's JavaScript.Registering a service worker will cause the browser to start the service worker install step in the background.</p>
+	<code>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}</code>
+
+This code checks to see if the service worker API is availabe and if it is , the service worker at /sw.js is registered
+<br />
+Typically during the install step, we'll want to cache some static assests.
+<br/>
+
+<code>
+  var CACHE_NAME="site-cache-v1";
+  var urlsToCache=[
+'/',
+'/styles/main.css',
+'/script/main.js'
+  ];
+
+
+	self.addEventListener('install', function(event) {
+  // Perform install steps:
+  event.waitUntil(
+  <ol>
+  <li>open a cache
+  </li>
+  	caches.open(CACHE_NAME)
+  	<li>cache our files</li>
+  	.then(function(cache){
+  	console.log('opened cache');
+  })
+  	<li>confirm whether all the required assest are cached or not
+
+
+  	</li>
+  return cache.addALL(urlsToCache);})
+
+);
+});
+</ol>
+</code>
+
+<p>
+If all the files are cached successfully, then the service worker becomes installed. If any of the files fail to download and cache, then the install step will fail and the service worker won't be installed.If that happens, it'll try again next time.<br />
+The above is just one example, we can perform other tasks in the install event or avoid setting an install event listenere altogether.
+
+</p>
+<p>After a service worker is installed and the user navigates to a different page or refreshes , the service worker will begin to receive <kbd>fetch</kbd> events, an example of which is below.
+	<code>
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
+  );
+});
+
+
+	</code>
+<br/>
+Here we've defined our <kbd>fetch </kbd>event and within event.respondWith(), we pass in a promise from <kbd>caches.match()</kbd>This method looks at the request and finds any cached results from any of the caches your service worker created. 
+<br /> If we have a matching response , we return the cached value, otherwise we return the result of a call to <kbd>fetch</kbd>, which will make a network request and return the data if anything can be retrieved from the network.<br/>
+If we want to cache new requests cumulatively, we can do so by handling the response of the fetch request , and then adding it to the cache, like below.<br/>
+<code>
+	//Add a callback to <kbd>.then()</kbd> on the <kbd>fetch</kbd>request.
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+
+      .then(function(response) {
+        // Cache hit - return response
+        //once we get a response, we perform the following checks:
+        //ensure the response is valid, check the status is <kbd>200</kbd> on the respone, make sure the respone type is 
+        //basic, meaning it's a request from our origin.
+
+        if (response) {
+          return response;
+        }
+
+        // IMPORTANT: Clone the request. A request is a stream and
+        // can only be consumed once. Since we are consuming this
+        // once by cache and once by the browser for fetch, we need
+        // to clone the response.
+        var fetchRequest = event.request.clone();
+
+        return fetch(fetchRequest).then(
+          function(response) {
+            // Check if we received a valid response
+            if(!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+
+            // IMPORTANT: Clone the response. A response is a stream
+            // and because we want the browser to consume the response
+            // as well as the cache consuming the response, we need
+            // to clone it so we have two streams.
+            var responseToCache = response.clone();
+
+            caches.open(CACHE_NAME)
+              .then(function(cache) {
+                cache.put(event.request, responseToCache);
+              });
+
+            return response;
+          }
+        );
+      })
+    );
+});
+
+
+</code>
+
+</p>
+
+
+
+
+<p>When installed , the activation step will follow  and this is a great opportunity for handling any management of old cache.
+The reason we'll want to do this in the <kbd>activate</kbd> callback is because if we were to wipe out any old caches in the install step, any old service worker, which keeps control of all the current pages, will suddently stop being able to serve files from that cache.
+
+
+</p>
+<p>After the activation step, the service worker will control all pages that fall under its scope,though the page that registered the service worker for the first time won't be controlled until it's loaded again. Once a service worker is in control , it will be in one of two states: either the service worker will be terminated to save memory, or it will handle fetch and message events that occur when a network request or message is made from our page . 
+
+
+
+
+<p style="font-size:0.5em;">
+Matt Gaunt,"Service Workers:an Introduction",https://developers.google.com/web/fundamentals/primers/service-workers/
+</p>
+
+
+</div>
+
+<footer data-role="footer"> </footer>
 
 </div>
 

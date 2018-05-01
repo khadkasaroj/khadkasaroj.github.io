@@ -36,20 +36,27 @@
 
 
   <div data-role=content >
-  	<button id="location" onclick="locate()">find my location</button>
+  	
+    <div id="location"><button id="displayPosition" onclick="locate()" >display current location</button></div>
     <span> Latitude : </span> <input type=text id=lat />
     <span> Longitude : </span> <input type=text id=lng />
-    <div id="map_canvas">
-    </div>
+   <a data-role=button id=btn>display map</a>
+  </div>
+  
+  
+</div>
+
+<div data-role=page id=win2 data-add-back-btn=true>
+  <div data-role=header>
+    <h1>user location in google map</h1>
   </div>
 
-
-
-
-
-
+  <div data-role=content>
+  </div>
+</div>
 <script>
-	var x= document.getElementById("location");
+
+ var x= document.getElementById("location");
     
     function locate(){
         navigator.geolocation.getCurrentPosition(initialize,fail);
@@ -58,11 +65,33 @@
     function initialize(position) {
       var lat= position.coords.latitude;
       var long=position.coords.longitude;
-       $("#lat").val (lat);
-       $("#lng").val(long);
-       drawMap(new google.maps.LatLng(lat,long));
-  }
+      $("#lat").val (lat);
+  $("#lng").val (long);
+ 
 
+}
+       $("#btn").bind ("click", function (event)
+{
+  var lat = $("#lat").val ();
+  var lng = $("#lng").val ();
+  var latlng = new google.maps.LatLng (lat, lng);
+  var options = { 
+    zoom : 15, 
+    center : latlng, 
+    mapTypeId : google.maps.MapTypeId.ROADMAP 
+  };
+  var $content = $("#win2 div:jqmData(role=content)");
+  $content.height (screen.height - 50);
+  var map = new google.maps.Map ($content[0], options);
+  $.mobile.changePage ($("#win2"));
+  
+  new google.maps.Marker ( 
+  { 
+    map : map, 
+    animation : google.maps.Animation.DROP,
+    position : latlng  
+  });  
+});
 
     function fail(error)
   {
@@ -82,31 +111,7 @@
       break;
     }
   }
-  
-   function drawMap(LatLng) {
-        var myOptions = {
-            zoom: 20,
-            center: LatLng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-        // Add an overlay to the map of current lat/lng
-        var marker = new google.maps.Marker({
-            position: LatLng,
-            map: map,
-            title: "I am here!"
-        });
-    }
-  
     </script>
-
-
-
-
-
-<footer data-role="footer">&copy; Saroj khadka </footer>
-
-</div>
 
 
 
@@ -114,5 +119,11 @@
 
 
 </body>
-
 </html>
+
+
+
+
+
+
+
